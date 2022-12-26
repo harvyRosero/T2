@@ -5,19 +5,21 @@ from django.urls import reverse
 
 
 class Category(models.Model):
+    id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=50, unique=True)
     
     def __str__(self):
         return self.name
     
 class Size(models.Model):
+    id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=50)
     
     def __str__(self):
         return self.name
 
 class Product(models.Model):
-    
+    id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=150)
     slug = models.SlugField(unique=True)
     description = models.TextField()
@@ -39,6 +41,7 @@ class Product(models.Model):
         return reverse("cart:product-detail", kwargs={"slug": self.slug})
     
 class ImageProduct(models.Model):
+    id = models.BigAutoField(primary_key=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images')
     imagen = models.ImageField(upload_to='images_adicionales')
     
