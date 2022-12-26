@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>{{ titulo }}</h2>
+
+<form method="get">
+
+    <label for="opciones">Selecciona una opción:</label>
+    <select id="opciones"  name="opcion">
+        <option selected >Todo</option>
+
+        {% for categoria in categorias %}
+            <option >{{ categoria }}</option>
+
+        {% endfor %}
+        
+    </select>
+
+    <button type="submit">Enviar</button>
+
+
+</form>
+
+<hr>
+<div class="site-section mt-5">
+    <div class="container ">
+        <div class="row mb-5 ">
+
+            {% for product in productos %}
+            
+                <div class="col-lg-3 col-md-6 mb-4 "  data-aos= 'fade-up' >
+
+                    <figure class="block-4-image text-center" >
+                        <a href="{{ product.get_absolute_url }}" > <img src="{{ product.image.url }}" 
+                            class="img-fluid " style="height:10rem"  > </a>
+                    </figure>
+                    
+
+                    <div class="bloc-4-text text-center  p-2">
+                        <a style="text-decoration:none; color:gray; " 
+                        href="{{ product.get_absolute_url }}" > <h3> {{ product.title }} </h3> </a>
+                        <p class="mb-0"> {{ product.description }} </p>
+                        <p class="text-black">$ {{ product.price }} </p> 
+                    </div>  
+                     
+                    <hr>
+                </div>
+                
+            {% endfor %}
+
+            
+
+        </div>
+    </div>
+</div>
+
+            
+            
+
+{% endblock %}

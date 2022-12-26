@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="bg-light py-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-0">
+                <a href="{% url 'cart:product-list' %}" >Atras</a>
+                <span class="mx-2 mb-0">/</span>
+                <strong class="text-block" > {{ product.title }} </strong>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<div class="site-section">
+    <div class="container">
+        <div class="row mb-5">
+
+            <div class="col-md-6">
+                <a> <img src="{{ product.image.url }}" class="img-fluid" > </a>
+            </div>
+
+            <div class="col-md-6">
+                <a> <img src="{{ product }}" class="img-fluid" > </a>
+            </div>
+              
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
